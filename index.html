@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Snake</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <h1 class="container__title text">Snake</h1>
+      <div class="container__menu menu">
+        <div class="speed-input-container">
+          <label class="speed-label text" for="speed">Speed:</label>
+          <input class="speed-input text" name="speed" type="text" placeholder="from 1 to 10">
+        </div>
+        <button class="start-btn text">Start</button>
+      </div>
+      <!-- <div class="container__field field">
+        <div class="snake__head snake" data-direction="right">
+          <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+          </div>
+        </div>
+        <div class="snake__body snake"></div>
+        <div class="apple"></div>
+      </div> -->
+    </div>
+  </div>
+</body>
+<script type="module" src="./js/apple.js"></script>
+<script type="module" src="./js/snake.js"></script>
+<script type="module" src="./js/game.js"></script>
+<script type="module" src="./js/index.js"></script>
+<script type="module" src="./js/score.js"></script>
+<script type="module" src="./js/settings.js"></script>
+</html>
