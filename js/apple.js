@@ -29,7 +29,7 @@ export class Apple {
   }
 
   isEaten() {
-    if (document.elementFromPoint(this._currentX, this._currentY).classList.contains("snake")) return true;
+    if (document.elementFromPoint(this._currentX + 3, this._currentY + 3).classList.contains("snake")) return true;
     return false;
   }
 }

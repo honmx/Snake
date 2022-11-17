@@ -72,6 +72,9 @@ export class Snake {
     this._shrink(index);
 
     if (this.lastKeysPressed.length > 1) this.lastKeysPressed.shift();
+
+    // console.log(this.head.getBoundingClientRect().left - this.container.getBoundingClientRect().left);
+    // console.log(this.container.offsetWidth);
   }
 
   grow() {
@@ -130,6 +133,10 @@ export class Snake {
     return index;
   }
 
+  _isHeadOutsideField() {
+    return !document.elementFromPoint(this.head.getBoundingClientRect().left, this.head.getBoundingClientRect().top).classList.contains("snake");
+  }
+
   _changePosition(direction) {
     for (let i = this.snake.length - 1; i > 0; i--) {
       this._alignElem(this.snake[i], this.snake[i-1], this.container, 0, 0);
@@ -138,17 +145,35 @@ export class Snake {
     
     this.head.dataset.direction = direction;
 
+    console.log(this._isHeadOutsideField());
+
     switch (direction) {
       case "up":
+        if (this._isHeadOutsideField()) {
+          this.head.style.top = this.container.offsetHeight - this.head.offsetHeight / 2 + "px";
+          break;
+        }
         this._alignElem(this.head, this.head, this.container, this.head.offsetWidth / 2, this.head.offsetHeight / 2);
         break;
       case "right":
+        if (this._isHeadOutsideField()) {
+          this.head.style.left = -this.head.offsetWidth / 2 + "px";
+          break;
+        }
         this._alignElem(this.head, this.head, this.container, -this.head.offsetWidth / 2, -this.head.offsetHeight / 2);
         break;
       case "left":
+        if (this._isHeadOutsideField()) {
+          this.head.style.left = this.container.offsetWidth - this.head.offsetWidth * 1.5 + "px";
+          break;
+        }
         this._alignElem(this.head, this.head, this.container, this.head.offsetWidth * 1.5, -this.head.offsetHeight / 2);
         break;
       case "down":
+        if (this._isHeadOutsideField()) {
+          this.head.style.top = this.head.offsetHeight / 2 + "px";
+          break;
+        }
         this._alignElem(this.head, this.head, this.container, this.head.offsetWidth / 2, -this.head.offsetHeight * 1.5);
         break;
     }

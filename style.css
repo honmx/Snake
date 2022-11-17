@@ -53,8 +53,8 @@ img {
 }
 
 .container {
-  width: 70%;
-  height: 80%;
+  width: 814px;
+  height: 560px;
   background-color: rgba(255, 255, 255, 0.555);
   border-radius: 15px;
   display: flex;
